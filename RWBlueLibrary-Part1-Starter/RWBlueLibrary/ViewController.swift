@@ -42,89 +42,109 @@ final class ViewController: UIViewController {
     private var allAlbums = [Album]()
 
     private enum Constants {
-    static let CellIdentifier = "Cell"
+      static let CellIdentifier = "Cell"
+      static let IndexRestorationKey = "currentAlbumIndex"
     }
+  
+  
+  
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //1 Get a list of all the albums via the API. Remember, the plan is to use the facade of LibraryAPI rather than PersistencyManager directly!
-        allAlbums = LibraryAPI.shared.getAlbums()
+  override func viewDidLoad() {
+      super.viewDidLoad()
+      //1 Get a list of all the albums via the API. Remember, the plan is to use the facade of LibraryAPI rather than PersistencyManager directly!
+      allAlbums = LibraryAPI.shared.getAlbums()
 
-        //2 This is where you setup the UITableView. You declare that the view controller is the UITableView data source; therefore, all the information required by UITableView will be provided by the view controller. Note that you can actually set the delegate and datasource in a storyboard, if your table view is created there.
-        tableView.dataSource = self
-      
-        horizontalScrollerView.dataSource = self
-        horizontalScrollerView.delegate = self
-        horizontalScrollerView.reload()
-      
-        showDataForAlbum(at: currentAlbumIndex)
-    }
+      //2 This is where you setup the UITableView. You declare that the view controller is the UITableView data source; therefore, all the information required by UITableView will be provided by the view controller. Note that you can actually set the delegate and datasource in a storyboard, if your table view is created there.
+      tableView.dataSource = self
+    
+      horizontalScrollerView.dataSource = self
+      horizontalScrollerView.delegate = self
+      horizontalScrollerView.reload()
+    
+      showDataForAlbum(at: currentAlbumIndex)
+  }
 
-    private func showDataForAlbum(at index: Int) {
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    horizontalScrollerView.scrollToView(at: currentAlbumIndex, animated: false)
+  }
+  
+  private func showDataForAlbum(at index: Int) {
 
-        // defensive code: make sure the requested index is lower than the amount of albums
-        if (index < allAlbums.count && index > -1) {
-          // fetch the album
-          let album = allAlbums[index]
-          // save the albums data to present it later in the tableview
-          currentAlbumData = album.tableRepresentation
-        } else {
-          currentAlbumData = nil
-        }
-        // we have the data we need, let's refresh our tableview
-        tableView.reloadData()
-        }
-
-    }
-
-extension ViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      guard let albumData = currentAlbumData else {
-          return 0
+      // defensive code: make sure the requested index is lower than the amount of albums
+      if (index < allAlbums.count && index > -1) {
+        // fetch the album
+        let album = allAlbums[index]
+        // save the albums data to present it later in the tableview
+        currentAlbumData = album.tableRepresentation
+      } else {
+        currentAlbumData = nil
       }
-      return albumData.count
+      // we have the data we need, let's refresh our tableview
+      tableView.reloadData()
+      }
+
+  }
+
+  extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let albumData = currentAlbumData else {
+            return 0
+        }
+    return albumData.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier, for: indexPath)
-      if let albumData = currentAlbumData {
-            let row = indexPath.row
-            cell.textLabel!.text = albumData[row].title
-            cell.detailTextLabel!.text = albumData[row].value
-      }
-      return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier, for: indexPath)
+        if let albumData = currentAlbumData {
+              let row = indexPath.row
+              cell.textLabel!.text = albumData[row].title
+              cell.detailTextLabel!.text = albumData[row].value
+        }
+        return cell
+    }
+  
   }
-    
-}
 
-extension ViewController: HorizontalScrollerViewDataSource {
-  func numberOfViews(in horizontalScrollerView: HorizontalScrollerView) -> Int {
-    return allAlbums.count
+  extension ViewController: HorizontalScrollerViewDataSource {
+    func numberOfViews(in horizontalScrollerView: HorizontalScrollerView) -> Int {
+      return allAlbums.count
   }
 
   func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, viewAt index: Int) -> UIView {
-    let album = allAlbums[index]
-    let albumView = AlbumView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), coverUrl: album.coverUrl)
-    if currentAlbumIndex == index {
-      albumView.highlightAlbum(true)
-    } else {
-      albumView.highlightAlbum(false)
+      let album = allAlbums[index]
+      let albumView = AlbumView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), coverUrl: album.coverUrl)
+      if currentAlbumIndex == index {
+        albumView.highlightAlbum(true)
+      } else {
+        albumView.highlightAlbum(false)
+      }
+      return albumView
     }
-    return albumView
   }
-}
 
-extension ViewController: HorizontalScrollerViewDelegate {
-  func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, didSelectViewAt index: Int) {
-    //1 First you grab the previously selected album, and deselect the album cover.
-    let previousAlbumView = horizontalScrollerView.view(at: currentAlbumIndex) as! AlbumView
-    previousAlbumView.highlightAlbum(false)
-    //2 Store the current album cover index you just clicked
-    currentAlbumIndex = index
-    //3 Grab the album cover that is currently selected and highlight the selection.
-    let albumView = horizontalScrollerView.view(at: currentAlbumIndex) as! AlbumView
-    albumView.highlightAlbum(true)
-    //4 Display the data for the new album within the table view.
-    showDataForAlbum(at: index)
+  extension ViewController: HorizontalScrollerViewDelegate {
+    func horizontalScrollerView(_ horizontalScrollerView: HorizontalScrollerView, didSelectViewAt index: Int) {
+      //1 First you grab the previously selected album, and deselect the album cover.
+      let previousAlbumView = horizontalScrollerView.view(at: currentAlbumIndex) as! AlbumView
+      previousAlbumView.highlightAlbum(false)
+      //2 Store the current album cover index you just clicked
+      currentAlbumIndex = index
+      //3 Grab the album cover that is currently selected and highlight the selection.
+      let albumView = horizontalScrollerView.view(at: currentAlbumIndex) as! AlbumView
+      albumView.highlightAlbum(true)
+      //4 Display the data for the new album within the table view.
+      showDataForAlbum(at: index)
+  }
+  override func encodeRestorableState(with coder: NSCoder) {
+    coder.encode(currentAlbumIndex, forKey: Constants.IndexRestorationKey)
+    super.encodeRestorableState(with: coder)
+  }
+  
+  override func decodeRestorableState(with coder: NSCoder) {
+    super.decodeRestorableState(with: coder)
+    currentAlbumIndex = coder.decodeInteger(forKey: Constants.IndexRestorationKey)
+    showDataForAlbum(at: currentAlbumIndex)
+    horizontalScrollerView.reload()
   }
 }
