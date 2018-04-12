@@ -77,23 +77,23 @@ final class ViewController: UIViewController {
 
     }
 
-    extension ViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let albumData = currentAlbumData else {
-            return 0
-        }
-        return albumData.count
-    }
+extension ViewController: UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      guard let albumData = currentAlbumData else {
+          return 0
+      }
+      return albumData.count
+  }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier, for: indexPath)
-        if let albumData = currentAlbumData {
-              let row = indexPath.row
-              cell.textLabel!.text = albumData[row].title
-              cell.detailTextLabel!.text = albumData[row].value
-        }
-        return cell
-    }
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier, for: indexPath)
+      if let albumData = currentAlbumData {
+            let row = indexPath.row
+            cell.textLabel!.text = albumData[row].title
+            cell.detailTextLabel!.text = albumData[row].value
+      }
+      return cell
+  }
     
 }
 
