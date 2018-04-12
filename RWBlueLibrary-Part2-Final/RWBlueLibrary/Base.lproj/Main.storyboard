@@ -12,8 +12,8 @@
         <!--Pop Music-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RWBlueLibrary" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <viewController restorationIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="RWBlueLibrary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="HorizontalScrollerView" customModule="RWBlueLibrary" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -84,7 +84,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Pop Music" id="mls-w5-egf"/>
                     <connections>
-                        <outlet property="horizontalScrollerView" destination="Dnv-ev-8Dl" id="aZM-Q7-Ey7"/>
+                        <outlet property="horizontalScrollerView" destination="Dnv-ev-8Dl" id="TdN-gu-3yt"/>
                         <outlet property="tableView" destination="AnY-ot-Xl2" id="TNs-oB-Cm6"/>
                         <outlet property="trashBarButtonItem" destination="SFM-mY-swp" id="jeB-gb-pyF"/>
                         <outlet property="undoBarButtonItem" destination="bdf-VO-SD2" id="0gC-fC-xVm"/>
@@ -97,7 +97,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ecH-UF-3zO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gWc-if-paK" sceneMemberID="viewController">
+                <navigationController restorationIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="gWc-if-paK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7VU-PB-C67">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
