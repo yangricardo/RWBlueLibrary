@@ -45,4 +45,21 @@ final class PersistencyManager {
     
     albums = [album1, album2, album3, album4, album5]
   }
+  
+  func getAlbums() -> [Album] {
+    return albums
+  }
+  
+  func addAlbum(_ album: Album, at index: Int) {
+    if (albums.count >= index) {
+      albums.insert(album, at: index)
+    } else {
+      albums.append(album)
+    }
+  }
+  
+  func deleteAlbum(at index: Int) {
+    albums.remove(at: index)
+  }
+
 }
