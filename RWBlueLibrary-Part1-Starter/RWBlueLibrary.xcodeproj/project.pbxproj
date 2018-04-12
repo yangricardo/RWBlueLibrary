@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2FD2F6A1208008D800AE3646 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2F6A0208008D800AE3646 /* NotificationExtension.swift */; };
+		2FD2F6A42080104B00AE3646 /* albums.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD2F6A32080104B00AE3646 /* albums.json */; };
 		2FD93A98207FA71100DCF2F0 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A97207FA71100DCF2F0 /* LibraryAPI.swift */; };
 		2FD93A9A207FA75F00DCF2F0 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A99207FA75F00DCF2F0 /* PersistencyManager.swift */; };
 		2FD93A9E207FB1B500DCF2F0 /* HorizontalScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A9D207FB1B500DCF2F0 /* HorizontalScrollerView.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		2FD2F6A0208008D800AE3646 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		2FD2F6A32080104B00AE3646 /* albums.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = albums.json; path = ../../albums.json; sourceTree = "<group>"; };
 		2FD93A97207FA71100DCF2F0 /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		2FD93A99207FA75F00DCF2F0 /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		2FD93A9D207FB1B500DCF2F0 /* HorizontalScrollerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		EDDF66141EBD28EF006123DA /* RWBlueLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				2FD2F6A32080104B00AE3646 /* albums.json */,
 				2FD93A94207FA69C00DCF2F0 /* Model */,
 				2FD93A95207FA6A600DCF2F0 /* View */,
 				EDDF66211EBD28EF006123DA /* Info.plist */,
@@ -190,6 +193,7 @@
 				EDDF66201EBD28EF006123DA /* LaunchScreen.storyboard in Resources */,
 				EDDF661D1EBD28EF006123DA /* Assets.xcassets in Resources */,
 				EDDF661B1EBD28EF006123DA /* Main.storyboard in Resources */,
+				2FD2F6A42080104B00AE3646 /* albums.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

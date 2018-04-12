@@ -82,4 +82,21 @@ final class PersistencyManager {
     }
     return UIImage(data: data)
   }
+  
+  private var documents: URL {
+    return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+  }
+  
+  private enum Filenames {
+    static let Albums = "albums.json"
+  }
+  
+  func saveAlbums() {
+    let url = documents.appendingPathComponent(Filenames.Albums)
+    let encoder = JSONEncoder()
+    guard let encodedData = try? encoder.encode(albums) else {
+      return
+    }
+    try? encodedData.write(to: url)
+  }
 }
