@@ -40,6 +40,10 @@ final class ViewController: UIViewController {
   private var currentAlbumData: [AlbumData]?
   private var allAlbums = [Album]()
   
+  private enum Constants {
+    static let CellIdentifier = "Cell"
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     //1 Get a list of all the albums via the API. Remember, the plan is to use the facade of LibraryAPI rather than PersistencyManager directly!
@@ -77,7 +81,7 @@ extension ViewController: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier, for: indexPath)
     if let albumData = currentAlbumData {
       let row = indexPath.row
       cell.textLabel!.text = albumData[row].title
