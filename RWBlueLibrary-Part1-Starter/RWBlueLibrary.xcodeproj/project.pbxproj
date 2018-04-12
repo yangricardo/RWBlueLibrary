@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FD2F6A1208008D800AE3646 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2F6A0208008D800AE3646 /* NotificationExtension.swift */; };
 		2FD93A98207FA71100DCF2F0 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A97207FA71100DCF2F0 /* LibraryAPI.swift */; };
 		2FD93A9A207FA75F00DCF2F0 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A99207FA75F00DCF2F0 /* PersistencyManager.swift */; };
 		2FD93A9E207FB1B500DCF2F0 /* HorizontalScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD93A9D207FB1B500DCF2F0 /* HorizontalScrollerView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2FD2F6A0208008D800AE3646 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		2FD93A97207FA71100DCF2F0 /* LibraryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
 		2FD93A99207FA75F00DCF2F0 /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
 		2FD93A9D207FB1B500DCF2F0 /* HorizontalScrollerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollerView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FD2F6A2208008DE00AE3646 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2FD2F6A0208008D800AE3646 /* NotificationExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		2FD93A94207FA69C00DCF2F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 				EDDF66351EBD2B5F006123DA /* API */,
 				EDDF661E1EBD28EF006123DA /* LaunchScreen.storyboard */,
 				EDDF66191EBD28EF006123DA /* Main.storyboard */,
+				2FD2F6A2208008DE00AE3646 /* Extension */,
 			);
 			path = RWBlueLibrary;
 			sourceTree = "<group>";
@@ -192,6 +203,7 @@
 				EDDF66181EBD28EF006123DA /* ViewController.swift in Sources */,
 				EDDF66371EBD2B8C006123DA /* HTTPClient.swift in Sources */,
 				2FD93A9E207FB1B500DCF2F0 /* HorizontalScrollerView.swift in Sources */,
+				2FD2F6A1208008D800AE3646 /* NotificationExtension.swift in Sources */,
 				2FD93A98207FA71100DCF2F0 /* LibraryAPI.swift in Sources */,
 				EDDF66161EBD28EF006123DA /* AppDelegate.swift in Sources */,
 				79F6FC431F14254E00E22ED5 /* AlbumView.swift in Sources */,
